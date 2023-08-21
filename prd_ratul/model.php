@@ -158,8 +158,7 @@ function updateSpecification($id, $name, $userStory, $acceptanceCriteria, $wiref
 
     $name = mysqli_real_escape_string($connection, $name);
     $userStory = mysqli_real_escape_string($connection, $userStory);
-    $acceptanceCriteria = mysqli_real_escape_string($connection, $acceptanceCriteria);
-    $id = (int)$id; 
+    $acceptanceCriteria = mysqli_real_escape_string($connection, $acceptanceCriteria);    
 
     if ($_FILES['wireframe']['size'] > 0) {
         $newWireframe = $_FILES['wireframe']['name'];
@@ -185,7 +184,6 @@ function updateSpecification($id, $name, $userStory, $acceptanceCriteria, $wiref
 
 function getSpecificationById($id){
     $connection = getCon();
-    $id = (int)$id; 
     
     $sql = "SELECT * FROM specification WHERE id={$id}";
     
@@ -204,7 +202,7 @@ function getSpecificationById($id){
 
 function deleteSpecification($id){
     $connection = getCon();
-    $id = (int)$id;
+
     
     $sql = "DELETE FROM specification WHERE id={$id}";
     
@@ -214,7 +212,7 @@ function deleteSpecification($id){
 }
 function deleteProject($id){
     $connection = getCon();
-    $id = (int)$id;
+
     
     $sql = "DELETE FROM project WHERE id={$id}";
     
@@ -224,8 +222,7 @@ function deleteProject($id){
 }
 
 function getFeaturesForProject($projectId){
-    $connection = getCon();
-    $projectId = (int)$projectId;
+    $connection = getCon();    
     
     $sql = "SELECT f.id, f.name FROM feature AS f INNER JOIN pf AS pf ON f.id = pf.fid WHERE pf.pid={$projectId}";
     
@@ -245,8 +242,7 @@ function getFeaturesForProject($projectId){
 }
 
 function removeAllProjectFeatures($projectId){
-    $connection = getCon();
-    $projectId = (int)$projectId;
+    $connection = getCon();    
     
     $sql = "DELETE FROM pf WHERE pid={$projectId}";
     
@@ -256,8 +252,7 @@ function removeAllProjectFeatures($projectId){
 }
 
 function updateProject($id, $name, $domain){
-    $connection = getCon();
-    $id = (int)$id;
+    $connection = getCon();    
     
     $name = mysqli_real_escape_string($connection, $name);
     $domain = (int)$domain;
